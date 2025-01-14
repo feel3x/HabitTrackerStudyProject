@@ -1,0 +1,18 @@
+
+
+CREATE TABLE "Habits" (
+	"habit_id"	INTEGER NOT NULL UNIQUE,
+	"habit_name"	TEXT NOT NULL UNIQUE,
+	"periodicity"	TEXT NOT NULL,
+	"creation_date"	TEXT NOT NULL,
+	PRIMARY KEY("habit_id" AUTOINCREMENT)
+);
+
+CREATE TABLE "Completion_Dates" (
+	"completion_date_id"	INTEGER NOT NULL UNIQUE,
+	"habit_id"	INTEGER NOT NULL,
+	"completion_date"	TEXT,
+	PRIMARY KEY("completion_date_id" AUTOINCREMENT),
+	FOREIGN KEY("habit_id") REFERENCES "Habits"("habit_id") ON UPDATE CASCADE ON DELETE CASCADE
+);
+
