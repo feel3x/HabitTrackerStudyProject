@@ -36,3 +36,10 @@ or
 python tracker_cli.py guided
 ```
 
+##Testing
+Run tests using pytest 
+```shell
+pytest
+```
+
+
