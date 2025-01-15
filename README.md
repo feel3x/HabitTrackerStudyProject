@@ -36,7 +36,7 @@ or
 python tracker_cli.py guided
 ```
 
-##Testing
+## Testing
 Run tests using pytest 
 ```shell
 pytest
