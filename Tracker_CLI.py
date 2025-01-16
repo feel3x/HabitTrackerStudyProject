@@ -7,7 +7,7 @@ import Guide
 parser = argparse.ArgumentParser(prog='HabitTracker',
                     description='This Habit Tracker is the backend implementation to help you track your habits.',
                     epilog='Thank you for using the Habit Tracker backend.')
-subparsers = parser.add_subparsers(dest="actions")
+subparsers = parser.add_subparsers(dest="actions", required=True)
 
 # create the parser for the "guided" command
 guided_parser = subparsers.add_parser('guided', help='Guided Command Line Interface Experience')
@@ -24,6 +24,7 @@ complete_parser.add_argument('-n', '--name', required=True, type=str, help='Name
 # create the parser for the "delete" command
 delete_parser = subparsers.add_parser('delete', help='Delete a habit.')
 delete_parser.add_argument('-n', '--name', required=True, type=str, help='Name of the habit to be deleted.')
+delete_parser.add_argument('-y', '--yes', action=argparse.BooleanOptionalAction, default=False, help='Delete Habit without confirmation needed.')
 
 # create the parser for the "analytics" command
 analytics_parser = subparsers.add_parser('analytics', help='Tools for analyzing your Habits')
@@ -63,7 +64,7 @@ if(args.actions=="create"):
 
 #Delete habit
 if(args.actions=="delete"):
-    manager.delete_habit(args.name)
+    manager.delete_habit(args.name, args.yes)
 
 #Complete habit
 if(args.actions=="complete"):
